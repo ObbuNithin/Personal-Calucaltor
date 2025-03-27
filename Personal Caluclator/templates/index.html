@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carbon Footprint Calculator</title>
+    <link rel="stylesheet" href="/static/css/styles.css">
+</head>
+<body>
+    <header class="header">
+        <div class="nav-container">
+            <a href="/" class="logo">
+                <i class="fas fa-leaf"></i>
+                Carbon Tracker
+            </a>
+            <nav class="nav-links">
+                <a href="/calculator">Calculator</a>
+                <a href="/about">About</a>
+                <a href="/profile">Profile</a>
+            </nav>
+        </div>
+    </header>
+    <div class="container">
+        <h1>Carbon Footprint Calculator</h1>
+        <form method="POST">
+            <div class="form-column">
+                <h2>Transportation</h2>
+                <div class="input-group">
+                    <label for="car_type">Car Type:</label>
+                    <select id="car_type" name="car_type">
+                        <option value="gasoline">Gasoline</option>
+                        <option value="diesel">Diesel</option>
+                        <option value="electric">Electric</option>
+                    </select>
+                </div>
+                <div class="input-group">
+                    <label for="car_miles">Miles Driven by Car per Week:</label>
+                    <input type="range" id="car_miles" name="car_miles" min="0" max="500" step="1">
+                </div>
+                <div class="input-group">
+                    <label for="bus_miles">Miles Traveled by Bus per Week:</label>
+                    <input type="range" id="bus_miles" name="bus_miles" min="0" max="500" step="1">
+                </div>
+                <div class="input-group">
+                    <label for="train_miles">Miles Traveled by Train per Week:</label>
+                    <input type="range" id="train_miles" name="train_miles" min="0" max="500" step="1">
+                </div>
+                <div class="input-group">
+                    <label for="flight_miles">Miles Traveled by Flights per Year:</label>
+                    <input type="range" id="flight_miles" name="flight_miles" min="0" max="50000" step="100">
+                </div>
+            </div>
+
+            <div class="form-column">
+                <h2>Water Usage</h2>
+                <div class="input-group">
+                    <label for="fridge_type">Fridge Type:</label>
+                    <select id="fridge_type" name="fridge_type">
+                        <option value="standard">Standard</option>
+                        <option value="energy_efficient">Energy Efficient</option>
+                    </select>
+                </div>
+                <div class="input-group">
+                    <label for="climate_zone">Climate Zone:</label>
+                    <select id="climate_zone" name="climate_zone">
+                        <option value="tropical">Tropical</option>
+                        <option value="temperate">Temperate</option>
+                        <option value="cold">Cold</option>
+                    </select>
+                </div>
+                <div class="input-group">
+                    <label for="showers_per_week">Showers per Week:</label>
+                    <input type="range" id="showers_per_week" name="showers_per_week" min="0" max="21" step="1">
+                </div>
+                <div class="input-group">
+                    <label for="time_in_shower">Time Spent in Shower (Minutes):</label>
+                    <input type="range" id="time_in_shower" name="time_in_shower" min="0" max="30" step="1">
+                </div>
+                <div class="input-group">
+                    <label for="laundry_per_month">Loads of Laundry per Month:</label>
+                    <input type="range" id="laundry_per_month" name="laundry_per_month" min="0" max="20" step="1">
+                </div>
+                <div class="input-group">
+                    <label for="flushes_per_day">Number of Flushes per Day:</label>
+                    <input type="range" id="flushes_per_day" name="flushes_per_day" min="0" max="10" step="1">
+                </div>
+                <div class="input-group">
+                    <label for="sink_water_per_week">Bottles of Water from Sink per Week:</label>
+                    <input type="range" id="sink_water_per_week" name="sink_water_per_week" min="0" max="50" step="1">
+                </div>
+            </div>
+
+            <div class="form-column">
+                <h2>Energy Usage</h2>
+                <div class="input-group">
+                    <label for="laptop_hours">Hours of Laptop Use per Day:</label>
+                    <input type="range" id="laptop_hours" name="laptop_hours" min="0" max="24" step="1">
+                </div>
+                <div class="input-group">
+                    <label for="tv_hours">Hours of TV Use per Day:</label>
+                    <input type="range" id="tv_hours" name="tv_hours" min="0" max="24" step="1">
+                </div>
+                <div class="input-group">
+                    <label for="residence_area">Square Feet of Your Residence:</label>
+                    <input type="range" id="residence_area" name="residence_area" min="100" max="5000" step="50">
+                </div>
+                <div class="input-group">
+                    <label for="ac_hours">Hours of AC Use per Day:</label>
+                    <input type="range" id="ac_hours" name="ac_hours" min="0" max="24" step="1">
+                </div>
+                <div class="input-group">
+                    <label for="heater_usage">How Many Times Heater is Used per Week:</label>
+                    <input type="range" id="heater_usage" name="heater_usage" min="0" max="10" step="1">
+                </div>
+            </div>
+
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+</body>
+</html>

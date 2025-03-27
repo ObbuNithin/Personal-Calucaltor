@@ -1,0 +1,312 @@
+<!-- {% extends "base.html" %}
+
+{% block content %} -->
+<div class="analysis-container">
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card main-card">
+                    <div class="card-header">
+                        <h3 class="text-center mb-0">AI Carbon Footprint Analysis</h3>
+                    </div>
+                    <div class="card-body">
+                        <!-- Upload Section -->
+                        <div class="upload-section text-center">
+                            <form method="POST" enctype="multipart/form-data" class="mb-4">
+                                <div class="form-group">
+                                    <div class="upload-area">
+                                        <i class="fas fa-file-pdf fa-3x mb-3"></i>
+                                        <h5>Upload Your Carbon Footprint Report</h5>
+                                        <p class="text-muted">Drag and drop your PDF or click to browse</p>
+                                        <input type="file" class="form-control-file" id="pdf_file" name="pdf_file" accept=".pdf" required>
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-analyze">
+                                    <i class="fas fa-robot mr-2"></i> Analyze with AI
+                                </button>
+                            </form>
+                        </div>
+
+                        <!-- Analysis Results -->
+                        {% if analysis %}
+                        <div class="analysis-results mt-5">
+                            <h4 class="text-center mb-4">Your Analysis Report</h4>
+                            <div class="analysis-content">
+                                <div class="analysis-sections">
+                                    <!-- Key Findings Section -->
+                                    <div class="analysis-section">
+                                        <div class="section-header">
+                                            <i class="fas fa-chart-line"></i>
+                                            <h5>Key Findings</h5>
+                                        </div>
+                                        <div class="section-content">
+                                            {{ analysis.split('2.')[0] | safe }}
+                                        </div>
+                                    </div>
+
+                                    <!-- Areas of Impact Section -->
+                                    <div class="analysis-section">
+                                        <div class="section-header">
+                                            <i class="fas fa-exclamation-circle"></i>
+                                            <h5>Areas of Impact</h5>
+                                        </div>
+                                        <div class="section-content">
+                                            {{ analysis.split('2.')[1].split('3.')[0] | safe if '2.' in analysis }}
+                                        </div>
+                                    </div>
+
+                                    <!-- Recommendations Section -->
+                                    <div class="analysis-section">
+                                        <div class="section-header">
+                                            <i class="fas fa-lightbulb"></i>
+                                            <h5>Recommendations</h5>
+                                        </div>
+                                        <div class="section-content">
+                                            {{ analysis.split('3.')[1].split('4.')[0] | safe if '3.' in analysis }}
+                                        </div>
+                                    </div>
+
+                                    <!-- Progress Section -->
+                                    <div class="analysis-section">
+                                        <div class="section-header">
+                                            <i class="fas fa-check-circle"></i>
+                                            <h5>Progress & Achievements</h5>
+                                        </div>
+                                        <div class="section-content">
+                                            {{ analysis.split('4.')[1].split('5.')[0] | safe if '4.' in analysis }}
+                                        </div>
+                                    </div>
+
+                                    <!-- Comparison Section -->
+                                    <div class="analysis-section">
+                                        <div class="section-header">
+                                            <i class="fas fa-balance-scale"></i>
+                                            <h5>Comparative Analysis</h5>
+                                        </div>
+                                        <div class="section-content">
+                                            {{ analysis.split('5.')[1] | safe if '5.' in analysis }}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+/* Background and Container Styles */
+.analysis-container {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    padding: 40px 0;
+}
+
+/* Card Styles */
+.main-card {
+    background: rgba(255, 255, 255, 0.95);
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.card-header {
+    background: linear-gradient(135deg, #2c7a7b 0%, #1a4a4a 100%);
+    color: white;
+    border-radius: 15px 15px 0 0 !important;
+    padding: 20px;
+}
+
+/* Upload Area Styles */
+.upload-area {
+    border: 2px dashed #2c7a7b;
+    border-radius: 10px;
+    padding: 30px;
+    margin: 20px 0;
+    background: #f8f9fa;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.upload-area:hover {
+    background: #fff;
+    border-color: #1a4a4a;
+}
+
+.upload-area i {
+    color: #2c7a7b;
+}
+
+.form-control-file {
+    opacity: 0;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    cursor: pointer;
+}
+
+/* Button Styles */
+.btn-analyze {
+    background: linear-gradient(135deg, #2c7a7b 0%, #1a4a4a 100%);
+    color: white;
+    padding: 12px 30px;
+    border-radius: 25px;
+    border: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.btn-analyze:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    color: white;
+}
+
+/* Analysis Results Styles */
+.analysis-content {
+    background: #f8f9fa;
+    padding: 25px;
+    border-radius: 10px;
+    line-height: 1.8;
+    font-size: 1rem;
+    color: #2c3e50;
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.05);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .container {
+        padding: 15px;
+    }
+    
+    .main-card {
+        margin: 10px;
+    }
+    
+    .upload-area {
+        padding: 20px;
+    }
+}
+
+/* Animation */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.analysis-results {
+    animation: fadeIn 0.5s ease-out;
+}
+
+.analysis-sections {
+    display: grid;
+    gap: 25px;
+}
+
+.analysis-section {
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s ease;
+}
+
+.analysis-section:hover {
+    transform: translateY(-2px);
+}
+
+.section-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #f0f0f0;
+}
+
+.section-header i {
+    color: #2c7a7b;
+    font-size: 1.5rem;
+    margin-right: 12px;
+}
+
+.section-header h5 {
+    margin: 0;
+    color: #2c3e50;
+    font-weight: 600;
+}
+
+.section-content {
+    color: #4a5568;
+    line-height: 1.8;
+    font-size: 0.95rem;
+}
+
+.section-content ul {
+    padding-left: 20px;
+    margin-top: 10px;
+}
+
+.section-content li {
+    margin-bottom: 8px;
+}
+
+/* Different colors for different sections */
+.analysis-section:nth-child(1) .section-header i { color: #2c7a7b; }
+.analysis-section:nth-child(2) .section-header i { color: #e17055; }
+.analysis-section:nth-child(3) .section-header i { color: #00b894; }
+.analysis-section:nth-child(4) .section-header i { color: #6c5ce7; }
+.analysis-section:nth-child(5) .section-header i { color: #fdcb6e; }
+
+/* Highlight important numbers */
+.section-content strong {
+    color: #2c7a7b;
+    font-weight: 600;
+}
+
+/* Add some animation */
+.analysis-section {
+    animation: slideIn 0.5s ease-out forwards;
+    opacity: 0;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.analysis-section:nth-child(1) { animation-delay: 0.1s; }
+.analysis-section:nth-child(2) { animation-delay: 0.2s; }
+.analysis-section:nth-child(3) { animation-delay: 0.3s; }
+.analysis-section:nth-child(4) { animation-delay: 0.4s; }
+.analysis-section:nth-child(5) { animation-delay: 0.5s; }
+
+@media (max-width: 768px) {
+    .analysis-section {
+        padding: 15px;
+    }
+    
+    .section-header i {
+        font-size: 1.2rem;
+    }
+    
+    .section-content {
+        font-size: 0.9rem;
+    }
+}
+</style>
+
+<!-- Add this in your head section or at the end of body -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+{% endblock %} 

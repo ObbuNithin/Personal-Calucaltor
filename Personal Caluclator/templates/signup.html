@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+                url('https://images.unsplash.com/photo-1498925008800-019c7d59d903?ixlib=rb-4.0.1');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        header {
+            background-color: linear-gradient(135deg, #1e4d40 0%, #2c7a7b 100%);
+            color: white;
+            padding: 1rem;
+            text-align: center;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        main {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 80px 20px;
+        }
+
+        .signup-box {
+            background-color: rgba(255, 255, 255, 0.95);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            max-width: 400px;
+            width: 90%;
+            box-sizing: border-box;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .signup-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(135deg, #1e4d40 0%, #2c7a7b 100%)
+        }
+
+        .signup-box h2 {
+            text-align: center;
+            color: linear-gradient(135deg, #1e4d40 0%, #2c7a7b 100%);
+            margin-bottom: 25px;
+            font-size: 28px;
+        }
+
+        .signup-box input {
+            width: 100%;
+            padding: 12px 15px;
+            margin: 10px 0;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            box-sizing: border-box;
+            transition: all 0.3s ease;
+            font-size: 16px;
+        }
+
+        .signup-box input:focus {
+            outline: none;
+            border-color: linear-gradient(135deg, #1e4d40 0%, #2c7a7b 100%);
+            box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.2);
+        }
+
+        .signup-box button {
+            width: 100%;
+            padding: 14px;
+            border: none;
+            border-radius: 8px;
+            background: linear-gradient(135deg, #1e4d40 0%, #2c7a7b 100%);
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            margin-top: 10px;
+        }
+
+        .signup-box button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(76, 175, 80, 0.4);
+        }
+
+        .signup-box p {
+            text-align: center;
+            color: #666;
+            margin-top: 20px;
+            font-size: 15px;
+        }
+
+        .signup-box a {
+            color: #4caf50;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        .signup-box a:hover {
+            color: linear-gradient(135deg, #1e4d40 0%, #2c7a7b 100%);
+        }
+
+        footer {
+            background-color: rgba(0, 0, 0, 0.8);
+            color: white;
+            text-align: center;
+            padding: 1rem;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        footer p {
+            margin: 0;
+            font-size: 14px;
+        }
+
+        footer a {
+            color: #4caf50;
+            text-decoration: none;
+        }
+
+        @media (max-width: 480px) {
+            .signup-box {
+                padding: 30px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="/" class="logo">🌱 Carbon Footprint Tracker</a>
+    </header>
+
+    <main>
+        <div class="signup-box">
+            <h2>Join the Green Movement</h2>
+            <form method="POST" action="/signup">
+                <input type="text" name="username" placeholder="Username" required>
+                <input type="email" name="email" placeholder="Email" required>
+                <input type="text" name="phone" placeholder="Phone Number" required>
+                <input type="number" name="age" placeholder="Age" required>
+                <input type="password" name="password" placeholder="Password" required>
+                <button type="submit">Start Your Green Journey</button>
+            </form>
+            <p>Already tracking your footprint? <a href="/login">Log In</a></p>
+        </div>
+    </main>
+
+    <footer>
+        <p>© 2024 EcoTracker. Making the world greener, one step at a time. 
+           <a href="/privacy">Privacy Policy</a> | <a href="/terms">Terms of Service</a>
+        </p>
+    </footer>
+</body>
+</html>

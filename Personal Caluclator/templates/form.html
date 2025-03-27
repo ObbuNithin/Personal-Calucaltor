@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carbon Footprint Calculator</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .tracking-toggle {
+            margin: 20px 0;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .tracking-toggle label {
+            display: inline-flex;
+            align-items: center;
+            cursor: pointer;
+            font-weight: 500;
+        }
+
+        .tracking-toggle input[type="checkbox"] {
+            margin-right: 10px;
+            width: 18px;
+            height: 18px;
+        }
+
+        .date-input {
+            display: none;
+            margin-top: 15px;
+        }
+
+        .date-input.active {
+            display: block;
+        }
+
+        .tracking-info {
+            font-size: 0.9em;
+            color: #666;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <a href="/" class="logo">
+            <i class="fas fa-leaf"></i>
+            Carbon Tracker
+        </a>
+        <nav class="nav-links">
+            <a href="/dashboard">Dashboard</a>
+            <a href="/view_progress">View Progress</a>
+            <a href="/yearly/report">Yearly Result</a>
+            <!-- <a href="/about">About</a> -->
+            <a href="{{ url_for('daily_entry') }}" class="highlight-link">
+                <i class="fas fa-calendar-check"></i>
+                Daily Tracker
+            </a>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <div class="page-title">
+                <h1>Carbon Footprint Calculator</h1>
+                <p class="subtitle">Calculate your environmental impact and learn how to reduce your carbon footprint.</p>
+            </div>
+
+            <div class="form-card">
+                <h2>Carbon Footprint Calculator</h2>
+                
+                <form method="POST" action="{{ url_for('calculator') }}" class="calculator-form">
+                    <!-- Transportation Section -->
+                    <div class="form-section">
+                        <h2><i class="fas fa-car"></i> Transportation</h2>
+                        <div class="input-group">
+                            <label for="car_type">Car Type:</label>
+                            <select id="car_type" name="car_type">
+                                <option value="gasoline">Gasoline</option>
+                                <option value="diesel">Diesel</option>
+                                <option value="electric">Electric</option>
+                            </select>
+                        </div>
+                        <div class="input-group">
+                            <label for="car_miles">Miles Driven by Car per Week:</label>
+                            <input type="range" id="car_miles" name="car_miles" min="0" max="500" step="1" oninput="this.nextElementSibling.value = this.value">
+                            <output>0</output>
+                        </div>
+                        <div class="input-group">
+                            <label for="bus_miles">Miles Traveled by Bus per Week:</label>
+                            <input type="range" id="bus_miles" name="bus_miles" min="0" max="500" step="1" oninput="this.nextElementSibling.value = this.value">
+                            <output>0</output>
+                        </div>
+                        <div class="input-group">
+                            <label for="train_miles">Miles Traveled by Train per Week:</label>
+                            <input type="range" id="train_miles" name="train_miles" min="0" max="500" step="1" oninput="this.nextElementSibling.value = this.value">
+                            <output>0</output>
+                        </div>
+                        <div class="input-group">
+                            <label for="flight_miles">Miles Traveled by Flights per Year:</label>
+                            <input type="range" id="flight_miles" name="flight_miles" min="0" max="50000" step="100" oninput="this.nextElementSibling.value = this.value">
+                            <output>0</output>
+                        </div>
+                    </div>
+
+                    <!-- Water Usage Section -->
+                    <div class="form-section">
+                        <h2><i class="fas fa-faucet"></i> Water Usage</h2>
+                        <div class="input-group">
+                            <label for="showers_per_week">Number of showers per week:</label>
+                            <input type="range" id="showers_per_week" name="showers_per_week" min="0" max="21" step="1" oninput="this.nextElementSibling.value = this.value">
+                            <output>0</output>
+                        </div>
+                        <div class="input-group">
+                            <label for="time_in_shower">Average time in shower (minutes):</label>
+                            <input type="range" id="time_in_shower" name="time_in_shower" min="0" max="30" step="1" oninput="this.nextElementSibling.value = this.value">
+                            <output>0</output>
+                        </div>
+                        <div class="input-group">
+                            <label for="loads_of_laundry">Loads of laundry per week:</label>
+                            <input type="range" id="loads_of_laundry" name="loads_of_laundry" min="0" max="10" step="1" oninput="this.nextElementSibling.value = this.value">
+                            <output>0</output>
+                        </div>
+                    </div>
+
+                    <!-- Energy Usage Section -->
+                    <div class="form-section">
+                        <h2><i class="fas fa-bolt"></i> Energy Usage</h2>
+                        <div class="input-group">
+                            <label for="laptop_hours">Hours of Laptop Use per Day:</label>
+                            <input type="range" id="laptop_hours" name="laptop_hours" min="0" max="24" step="1" oninput="this.nextElementSibling.value = this.value">
+                            <output>0</output>
+                        </div>
+                        <div class="input-group">
+                            <label for="tv_hours">Hours of TV Use per Day:</label>
+                            <input type="range" id="tv_hours" name="tv_hours" min="0" max="24" step="1" oninput="this.nextElementSibling.value = this.value">
+                            <output>0</output>
+                        </div>
+                        <div class="input-group">
+                            <label for="ac_hours">Hours of AC Use per Day:</label>
+                            <input type="range" id="ac_hours" name="ac_hours" min="0" max="24" step="1" oninput="this.nextElementSibling.value = this.value">
+                            <output>0</output>
+                        </div>
+                        <div class="input-group">
+                            <label for="heater_usage">How Many Times Heater is Used per Week:</label>
+                            <input type="range" id="heater_usage" name="heater_usage" min="0" max="10" step="1" oninput="this.nextElementSibling.value = this.value">
+                            <output>0</output>
+                        </div>
+                    </div>
+
+                    <!-- Clean submit button -->
+                    <div class="action-buttons">
+                        <button type="submit" class="submit-btn">
+                            <i class="fas fa-calculator"></i>
+                            <span>Calculate Footprint</span>
+                        </button>
+                        {% if user_logged_in %}
+                        <a href="{{ url_for('dashboard') }}" class="btn btn-secondary">
+                            <i class="fas fa-chart-line"></i>
+                            View History
+                        </a>
+                        {% endif %}
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        "Reduce your carbon footprint, it's the only footprint you should leave behind."
+    </footer>
+
+    <script src="/static/js/script.js"></script>
+    <script>
+        // Set default date to today
+        const today = new Date().toISOString().split('T')[0];
+        document.querySelector('input[type="date"]').value = today;
+    </script>
+</body>
+</html>

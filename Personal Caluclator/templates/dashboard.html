@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carbon Footprint Dashboard</title>
+    <link rel="stylesheet" href="static/css/dashboard.css">
+    <!-- Add Font Awesome for better icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Add Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header Section -->
+    <header class="header-section">
+        <div class="menu-container">
+            <div class="menu-icon" onclick="toggleMenu()">
+                <i class="fas fa-bars"></i>
+            </div>
+            <div class="logo">
+                <i class="fas fa-leaf"></i> Carbon Tracker
+            </div>
+        </div>
+
+        <div class="welcome-container">
+            <h1>Track Your Environmental Impact</h1>
+            <p class="intro-text">Make informed decisions to reduce your carbon footprint and help create a sustainable future.</p>
+            <a href="/calculator" class="cta-button">Calculate Your Footprint</a>
+        </div>
+    </header>
+
+    <!-- Dashboard Stats Section -->
+    <div class="stats-container">
+        <div class="stat-card">
+            <i class="fas fa-bolt"></i>
+            <h3>Energy Usage</h3>
+            <p>Track your monthly consumption</p>
+        </div>
+        <div class="stat-card">
+            <i class="fas fa-car"></i>
+            <h3>Transport</h3>
+            <p>Monitor travel emissions</p>
+        </div>
+        <div class="stat-card">
+            <i class="fas fa-utensils"></i>
+            <h3>Food Impact</h3>
+            <p>Analyze dietary choices</p>
+        </div>
+        <div class="stat-card">
+            <i class="fas fa-recycle"></i>
+            <h3>Waste Management</h3>
+            <p>Optimize recycling habits</p>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="content-container">
+        <section class="carbon-info">
+            <h2>Understanding Your Carbon Footprint</h2>
+            <div class="info-grid">
+                <div class="info-card">
+                    <i class="fas fa-temperature-high"></i>
+                    <h3>Global Warming</h3>
+                    <p>Reducing carbon emissions helps slow down the rate of global warming and its devastating effects.</p>
+                </div>
+                <div class="info-card">
+                    <i class="fas fa-water"></i>
+                    <h3>Ocean Health</h3>
+                    <p>Lower emissions help prevent ocean acidification and protect marine ecosystems.</p>
+                </div>
+                <div class="info-card">
+                    <i class="fas fa-mountain"></i>
+                    <h3>Polar Ice Caps</h3>
+                    <p>Your actions can help slow down the melting of polar ice caps and preserve Arctic habitats.</p>
+                </div>
+                <div class="info-card">
+                    <i class="fas fa-seedling"></i>
+                    <h3>Ecosystem Balance</h3>
+                    <p>Reducing your carbon footprint helps maintain the delicate balance of Earth's ecosystems.</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Sidebar Menu -->
+    <div id="sidebar" class="sidebar">
+        <div class="close-btn" onclick="toggleMenu()">
+            <i class="fas fa-times"></i>
+        </div>
+        <div class="user-profile">
+            <i class="fas fa-user-circle"></i>
+            <span>Welcome, User!</span>
+        </div>
+        <ul>
+            <li><a href="/update_profile"><i class="fas fa-user-edit"></i> Update Profile</a></li>
+            <li><a href="/calculator"><i class="fas fa-calculator"></i> Calculator</a></li>
+            <li><a href="/view_progress"><i class="fas fa-chart-line"></i> View Progress</a></li>
+            <li><a href="/logout"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+        </ul>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="/about">About Us</a></li>
+                    <li><a href="/contact">Contact</a></li>
+                    <li><a href="/privacy">Privacy Policy</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Connect With Us</h4>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Carbon Footprint Dashboard. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script src="static/js/script.js"></script>
+</body>
+</html>

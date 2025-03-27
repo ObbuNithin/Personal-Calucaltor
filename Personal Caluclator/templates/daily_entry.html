@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Daily Carbon Footprint Entry</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #1e4d40 0%, #2c7a7b 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .header {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 1rem 2rem;
+            margin-bottom: 30px;
+        }
+
+        .nav-links {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: 0.3s;
+        }
+
+        .logo {
+            color: white;
+            text-decoration: none;
+            font-size: 1.5rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .form-card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-card h2 {
+            color: #2c7a7b;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        .form-card p {
+            color: #666;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .section {
+            margin-bottom: 30px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 10px;
+        }
+
+        .section h3 {
+            color: #2c7a7b;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: #444;
+            font-weight: 500;
+        }
+
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 10px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 1em;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus, .form-group select:focus {
+            border-color: #2c7a7b;
+            outline: none;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #2c7a7b 0%, #1e4d40 100%);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 30px;
+            font-size: 1.1em;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: block;
+            width: 100%;
+            max-width: 300px;
+            margin: 30px auto 0;
+            text-align: center;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(44, 122, 123, 0.3);
+        }
+
+        .eco-tip {
+            background-color: #d4edda;
+            border: 1px solid #c3e6cb;
+            color: #155724;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 5px;
+            font-size: 0.9em;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+            
+            .form-card {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <nav class="nav-links">
+            <a href="/" class="logo">
+                <i class="fas fa-leaf"></i>
+                Carbon Tracker
+            </a>
+            <a href="/calculator">Calculator</a>
+            <a href="/dashboard">Dashboard</a>
+            <!-- <a href="/profile">Profile</a> -->
+        </nav>
+    </header>
+
+    <div class="container">
+        <div class="form-card">
+            <h2>Daily Carbon Footprint Tracker</h2>
+            <p>Enter your daily activities to track your carbon footprint</p>
+
+            <form method="POST" action="{{ url_for('daily_entry') }}">
+                <div class="section">
+                    <h3><i class="fas fa-shower"></i> Water Usage</h3>
+                    <div class="form-group">
+                        <label>Number of showers today:</label>
+                        <input type="number" name="showers" min="0" required>
+                        <div class="eco-tip">Recommended: 1-2 showers per day</div>
+                    </div>
+                    <div class="form-group">
+                        <label>Average shower duration (minutes):</label>
+                        <input type="number" name="shower_minutes" min="0" required>
+                        <div class="eco-tip">Aim for 5-10 minutes per shower</div>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h3><i class="fas fa-bolt"></i> Electricity Usage</h3>
+                    <div class="form-group">
+                        <label>Hours using laptop/computer:</label>
+                        <input type="number" name="laptop_hours" min="0" step="0.5" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Hours using TV:</label>
+                        <input type="number" name="tv_hours" min="0" step="0.5" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Hours using AC:</label>
+                        <input type="number" name="ac_hours" min="0" step="0.5" required>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h3><i class="fas fa-car"></i> Transportation</h3>
+                    <div class="form-group">
+                        <label>Car type:</label>
+                        <select name="car_type">
+                            <option value="gasoline">Gasoline</option>
+                            <option value="diesel">Diesel</option>
+                            <option value="electric">Electric</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Miles driven today:</label>
+                        <input type="number" name="car_miles" min="0" step="0.1" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Miles by public transit:</label>
+                        <input type="number" name="bus_miles" min="0" step="0.1" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary">Calculate Footprint</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html> 

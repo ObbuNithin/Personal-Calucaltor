@@ -1,0 +1,343 @@
+/* Modern Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, #1e4d40 0%, #2c7a7b 100%);
+    min-height: 100vh;
+    line-height: 1.6;
+    color: #333;
+    position: relative;
+    background-image: 
+        linear-gradient(135deg, rgba(30, 77, 64, 0.97) 0%, rgba(44, 122, 123, 0.97) 100%),
+        url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+/* Header Styles */
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: rgba(255, 255, 255, 0.95);
+    padding: 1rem 2rem;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    color: #1e4d40;
+    font-size: 1.5rem;
+    font-weight: 700;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.logo i {
+    color: #2c7a7b;
+}
+
+.nav-links {
+    display: flex;
+    gap: 2rem;
+}
+
+.nav-links a {
+    color: #1e4d40;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: #2c7a7b;
+}
+
+/* Main Content Styles */
+.main-content {
+    padding-top: 80px;
+    padding-bottom: 80px;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 20px;
+    padding: 2.5rem;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+    width: 100%;
+    max-width: 1200px;
+    margin: 20px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.page-title {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.page-title h1 {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+.page-title .subtitle {
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+}
+
+/* Form Columns with Glass Effect */
+.form-column {
+    flex: 1;
+    min-width: 300px;
+    background: rgba(255, 255, 255, 0.95);
+    padding: 3rem;
+    border-radius: 25px;
+    box-shadow: 0 10px 40px rgba(44, 122, 123, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.form-column:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 50px rgba(44, 122, 123, 0.2);
+}
+
+/* Enhanced Input Styles */
+.input-group {
+    position: relative;
+    margin-bottom: 2rem;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 0.8rem;
+    color: #1e4d40;
+    font-weight: 500;
+    font-size: 0.95rem;
+}
+
+/* Footer Styles */
+.footer {
+    padding: 0.8rem;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.95);
+    font-size: 0.9rem;
+    color: #1e4d40;
+    font-style: italic;
+}
+
+/* Enhanced Creative Select Dropdowns */
+select {
+    width: 100%;
+    padding: 10px 15px;
+    border-radius: 15px;
+    font-size: 0.95rem;
+    color: #1e4d40;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%232c7a7b' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 20px center;
+    background-size: 18px;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+select:hover {
+    border-color: #2c7a7b;
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 10px 20px rgba(44, 122, 123, 0.15);
+}
+
+select:focus {
+    outline: none;
+    border-color: #2c7a7b;
+    box-shadow: 0 0 0 3px rgba(44, 122, 123, 0.2), 0 10px 20px rgba(44, 122, 123, 0.15);
+    transform: translateY(-3px) scale(1.02);
+}
+
+/* Super Creative Range Sliders */
+input[type="range"] {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 8px;
+    background: linear-gradient(to right, 
+        #1e4d40 var(--value, 0%), 
+        #e0e0e0 var(--value, 0%)
+    );
+    border-radius: 20px;
+    margin: 15px 0;
+    position: relative;
+    cursor: pointer;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background: white;
+    cursor: pointer;
+    border: 3px solid #2c7a7b;
+    box-shadow: 0 3px 15px rgba(44, 122, 123, 0.3);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+}
+
+input[type="range"]::-webkit-slider-thumb:hover {
+    transform: scale(1.3);
+    background: #f0f9f9;
+    box-shadow: 0 0 20px rgba(44, 122, 123, 0.4);
+}
+
+input[type="range"]::-webkit-slider-thumb:active {
+    transform: scale(1.2);
+    background: #e0f2f2;
+}
+
+/* Fancy Output Display */
+output {
+    display: inline-block;
+    padding: 5px 12px;
+    background: linear-gradient(135deg, #1e4d40 0%, #2c7a7b 100%);
+    color: white;
+    border-radius: 15px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    min-width: 45px;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(44, 122, 123, 0.3);
+    position: relative;
+    margin-left: 10px;
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-5px); }
+    100% { transform: translateY(0px); }
+}
+
+output::before {
+    content: '';
+    position: absolute;
+    left: -8px;
+    top: 50%;
+    transform: translateY(-50%);
+    border-right: 8px solid #1e4d40;
+    border-top: 8px solid transparent;
+    border-bottom: 8px solid transparent;
+}
+
+/* Inspirational Quote Footer */
+.quote::before,
+.quote::after {
+    content: '"';
+    font-size: 4rem;
+    color: #2c7a7b;
+    position: absolute;
+    opacity: 0.2;
+    font-family: Georgia, serif;
+}
+
+.quote::before {
+    left: 0;
+    top: -1.5rem;
+}
+
+.quote::after {
+    right: 0;
+    bottom: -2.5rem;
+}
+
+.quote-author {
+    color: #2c7a7b;
+    font-weight: 600;
+    margin-top: 1.5rem;
+    display: block;
+    font-size: 1.1rem;
+    letter-spacing: 0.5px;
+}
+
+/* Rest of your existing styles... */
+
+.unified-form {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 2rem;
+    border-radius: 25px;
+    box-shadow: 0 10px 40px rgba(44, 122, 123, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.form-section {
+    margin-bottom: 2rem;
+    padding-bottom: 1.5rem;
+}
+
+.form-section:last-of-type {
+    border-bottom: none;
+}
+
+.form-section h2 {
+    color: #1e4d40;
+    font-size: 1.3rem;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.form-section h2 i {
+    color: #2c7a7b;
+    font-size: 1.8rem;
+}
+
+.input-group {
+    margin-bottom: 1.2rem;
+    padding-left: 1.5rem;
+}
+
+/* Smaller Submit Button */
+.submit-btn {
+    display: block;
+    width: 100%;
+    max-width: 300px;
+    margin: 2rem auto 0;
+    padding: 0.8rem 1.5rem;
+    background: linear-gradient(135deg, #1e4d40 0%, #2c7a7b 100%);
+    color: white;
+    border: none;
+    border-radius: 15px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(44, 122, 123, 0.2);
+}
+
+.submit-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(44, 122, 123, 0.3);
+}

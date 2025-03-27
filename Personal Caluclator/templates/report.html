@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carbon Footprint Report</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <h1>Your Carbon Footprint Reports</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>Water Emissions</th>
+                <th>Electricity Emissions</th>
+                <th>Heat Emissions</th>
+                <th>Vehicle Emissions</th>
+                <th>Public Transit Emissions</th>
+                <th>Plane Emissions</th>
+                <th>Total Emissions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for footprint in footprints %}
+            <tr>
+                <td>{{ footprint.timestamp }}</td>
+                <td>{{ footprint.water_emissions }} kg CO2</td>
+                <td>{{ footprint.electricity_emissions }} kg CO2</td>
+                <td>{{ footprint.heat_emissions }} kg CO2</td>
+                <td>{{ footprint.vehicle_emissions }} kg CO2</td>
+                <td>{{ footprint.public_transit_emissions }} kg CO2</td>
+                <td>{{ footprint.plane_emissions }} kg CO2</td>
+                <td><strong>{{ footprint.total }} kg CO2</strong></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <a href="/">Back to Calculator</a>
+</body>
+</html>
